@@ -28,6 +28,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <math.h>
 using namespace std;
 extern string input_video_new; //input_path and output_path 
 extern string output_video_new;
@@ -299,14 +300,20 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
             out<<0.0<<" ";
         }
         else if(pcond==true){
-            if(static_cast<float>(landmark.x())-posl[i].first<0)
-              out<<-1<<" ";
-            else if(static_cast<float>(landmark.x())-posl[i].first==0) out<<0<<" ";
-            else out<<1<<" ";
-            if(static_cast<float>(landmark.y())-posl[i].second<0)
-              out<<-1<<" ";
-            else if(static_cast<float>(landmark.y())-posl[i].second==0) out<<0<<" ";
-            else out<<1<<" ";
+            if(abs(static_cast<float>(landmark.x())-posl[i].first)<0.001){
+              out<<0<<" ";
+            }
+            else{
+              if(static_cast<float>(landmark.x())-posl[i].first>0) out<<1<<" ";
+              else out<<-1<<" ";
+            }
+            if(abs(static_cast<float>(landmark.y())-posl[i].second)<0.001){
+              out<<0<<" ";
+            }
+            else{
+              if(static_cast<float>(landmark.y())-posl[i].second>0) out<<1<<" ";
+              else out<<-1<<" ";
+            }
         }
         //out<<i<<" : ("<<posl[i].first<<" "<<posl[i].second<<") ";
         out.close();
