@@ -6,11 +6,11 @@ This project is for academic purpose. Thank you for Google's Mediapipe team :)
 
 ### Data Preprocessing with Mediapipe (Desktop on CPU)
 Create training data on Desktop with input video using [Multi Hand Tracking](https://github.com/google/mediapipe/blob/master/mediapipe/docs/multi_hand_tracking_mobile_gpu.md).
-Gesture recognition with deep learning model can be done with (x,y) coordinate changes of **hand landmarks** RNN training per frame.
+Gesture recognition with deep learning model can be done with **hand landmark features** per frame with RNN training .
 
 **CUSTOMIZE:**
 - Use video input instead of Webcam on Desktop to train with video data
-- Compute hand landmarks coordinate changes for every frame per one word and make it into one txt file
+- Preprocess hand landmarks for every frame per one word and make it into one txt file
 
 ### 1. Set up Hand Tracking framework
 * Install Medapipe
@@ -72,22 +72,30 @@ input_video
     └── IMG_2475.MOV
     ...
 ```
-The output path is initially an empty directory, and when the build is complete, Mp4 and txt files are extracted to your folder path.
+The output path is initially an empty directory, and when the build is complete, Mp4 and txt folders are extracted to your folder path.
 
 Created folder example:
 ```shell
 output_data
-├── _Apple
-│   ├── IMG_2733.mp4
-│   ├── IMG_2734.mp4
-│   ├── IMG_2735.mp4
-│   └── IMG_2736.mp4
-└── Apple
-    ├── IMG_2733.txt
-    ├── IMG_2734.txt
-    ├── IMG_2735.txt
-    └── IMG_2736.txt
-    ...
+├── Absolute
+│   └── Apple
+│       ├── IMG_2733.txt
+│       ├── IMG_2734.txt
+│       ├── IMG_2735.txt
+│       └── IMG_2736.txt
+|       ...
+├── Relative
+│   └── Apple
+│       ├── IMG_2733.txt
+│       ├── IMG_2734.txt
+│       ├── IMG_2735.txt
+│       └── IMG_2736.txt
+│       ...
+└── _Apple
+     ├── IMG_2733.mp4 
+     ├── IMG_2734.mp4
+     ├── IMG_2735.mp4
+     └── IMG_2736.mp4
 ```
 
 Our ASL word example:
@@ -107,7 +115,7 @@ Your contribution is welcome [here](https://github.com/rabBit64/Sign-language-re
 ```shell
   python train.py --input_train_path=[INPUT_TRAIN_PATH] 
 ```
-INPUT_TRAIN_PATH is the path to the output folder in the previous step. The model is saved as 'model.h5' in the current directory.
+INPUT_TRAIN_PATH is the path to the output folder in the previous step. (either Relative or Absolute path) The model is saved as 'model.h5' in the current directory.
 
 Watch [this video](https://www.youtube.com/watch?v=5epWNiv5EKk&t=77s) for the overall workflow.
 [more details](https://www.slideshare.net/JiHyunKim204)
