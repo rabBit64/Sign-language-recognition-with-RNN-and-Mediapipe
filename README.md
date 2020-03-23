@@ -60,12 +60,7 @@ input_video
 │   ├── IMG_2734.MOV
 │   ├── IMG_2735.MOV
 │   └── IMG_2736.MOV
-├── Bird
-│   ├── IMG_2631.MOV
-│   ├── IMG_2632.MOV
-│   ├── IMG_2633.MOV
-│   └── IMG_2634.MOV
-└── Child
+└── Happy
     ├── IMG_2472.MOV
     ├── IMG_2473.MOV
     ├── IMG_2474.MOV
@@ -98,15 +93,7 @@ output_data
      └── IMG_2736.mp4
 ```
 
-Our ASL word example:
 Your contribution is welcome [here](https://github.com/rabBit64/Sign-language-recognition-with-RNN-and-Mediapipe/tree/master/ASL)!
-| word | word | word | word |
-|:------:|:------:|:------:|:------:|
-|Apple|Bird|Blue|Cents|
-|Child|Cow|Drink|Green|
-|Hello|Like|Metoo|No|
-|Orange|Sorry|Thankyou|Where|
-|Who|Yes|You|   |
 
 
 ### 3. Train RNN model
