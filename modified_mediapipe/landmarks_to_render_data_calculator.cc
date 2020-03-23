@@ -231,6 +231,7 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
     
     //get video name from input_file path
     string str="";
+    string strabs="";
     if(size_argc==4){
     	string video_fname="";
     	bool isTrue=false;
@@ -244,7 +245,7 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
     	slx--;
     	//get directory name that store text file from input_file path
     	string dir_name="/";      
-   	for(;input_video_new[slx]!='/';slx--){
+        for(;input_video_new[slx]!='/';slx--){
         	dir_name=input_video_new[slx]+dir_name;
     	}
     	
@@ -257,18 +258,21 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
         	output_path_cp.push_back(output_video_new[j]);
     	}
     	//output file path 
-    	str=output_path_cp+dir_name+video_fname+".txt";
-      
+    	str=output_path_cp+"Relative/"+dir_name+video_fname+".txt";
+        strabs=output_path_cp+"Absolute/"+dir_name+video_fname+".txt";
     	//output file open
     	//ofstream out(str,std::ios_base::out | std::ios_base::app);
     }
 
     if(size_argc==4&&condition_code==1&&con_idx2==1){
         ofstream slt(str,ios_base::out | ios_base::app);
+        ofstream slt2(strabs,ios_base::out | ios_base::app);
         for(int i=0;i<landmarks.landmark_size(); ++i){
             slt<<0.0<<" ";
             slt<<0.0<<" ";
+            slt2<<0.0<<" "<<0.0<<" ";
         }
+        slt2.close();
         slt.close();
     }
     //cout<<condition_code<<"\n";
@@ -295,28 +299,30 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
 
       if(size_argc==4){
         ofstream out(str,ios_base::out | ios_base::app);
+        ofstream out2(strabs,ios_base::out | ios_base::app);
+
         if(pcond==false){
             out<<0.0<<" ";
             out<<0.0<<" ";
         }
         else if(pcond==true){
-            if(abs(static_cast<float>(landmark.x())-posl[i].first)<0.001){
+            if(abs(static_cast<float>(landmark.x())-posl[i].first)<0.001)
               out<<0<<" ";
-            }
             else{
               if(static_cast<float>(landmark.x())-posl[i].first>0) out<<1<<" ";
               else out<<-1<<" ";
             }
-            if(abs(static_cast<float>(landmark.y())-posl[i].second)<0.001){
+            if(abs(static_cast<float>(landmark.y())-posl[i].second)<0.001)
               out<<0<<" ";
-            }
             else{
               if(static_cast<float>(landmark.y())-posl[i].second>0) out<<1<<" ";
               else out<<-1<<" ";
             }
         }
+        out2<<static_cast<float>(landmark.x())<<" "<<static_cast<float>(landmark.y())<<" ";
         //out<<i<<" : ("<<posl[i].first<<" "<<posl[i].second<<") ";
         out.close();
+        out2.close();
       }
       posl[i].first=static_cast<float>(landmark.x());
       posl[i].second=static_cast<float>(landmark.y());
