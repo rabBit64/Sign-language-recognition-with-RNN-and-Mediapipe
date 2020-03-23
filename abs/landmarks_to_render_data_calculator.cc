@@ -245,7 +245,7 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
     	slx--;
     	//get directory name that store text file from input_file path
     	string dir_name="/";      
-        for(;input_video_new[slx]!='/';slx--){
+   	for(;input_video_new[slx]!='/';slx--){
         	dir_name=input_video_new[slx]+dir_name;
     	}
     	
@@ -258,8 +258,8 @@ REGISTER_CALCULATOR(LandmarksToRenderDataCalculator);
         	output_path_cp.push_back(output_video_new[j]);
     	}
     	//output file path 
-    	str=output_path_cp+"Relative/"+dir_name+video_fname+".txt";
-        strabs=output_path_cp+"Absolute/"+dir_name+video_fname+".txt";
+    	str=output_path_cp+dir_name+video_fname+".txt";
+      strabs=output_path_cp+"abs"+dir_name+video_fname+".txt";
     	//output file open
     	//ofstream out(str,std::ios_base::out | std::ios_base::app);
     }

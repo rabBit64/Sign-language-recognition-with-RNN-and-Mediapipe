@@ -9,10 +9,6 @@ def main(input_data_path,output_data_path):
     cmd='GLOG_logtostderr=1 bazel-bin/mediapipe/examples/desktop/multi_hand_tracking/multi_hand_tracking_cpu \--calculator_graph_config_file=mediapipe/graphs/hand_tracking/multi_hand_tracking_desktop_live.pbtxt'
     #미디어 파이프 명령어 저장listfile
     listfile=os.listdir(input_data_path)
-    if not(os.path.isdir(output_data_path+"Relative/")):
-        os.mkdir(output_data_path+"Relative/")
-    if not(os.path.isdir(output_data_path+"Absolute/")):
-        os.mkdir(output_data_path+"Absolute/")
     for file in listfile:
         #해당 디렉토리의 하위 디렉토리 폴더명을 찾음
         if not(os.path.isdir(input_data_path+file)): #ignore .DS_Store
@@ -22,10 +18,10 @@ def main(input_data_path,output_data_path):
         # 하위디렉토리의 모든 비디오들의 이름을 저장
         if not(os.path.isdir(output_data_path+"_"+word)):
             os.mkdir(output_data_path+"_"+word)
-        if not(os.path.isdir(output_data_path+"Relative/"+word)):
-            os.mkdir(output_data_path+"Relative/"+word)
-        if not(os.path.isdir(output_data_path+"Absolute/"+word)):
-            os.mkdir(output_data_path+"Absolute/"+word)
+        if not(os.path.isdir(output_data_path+word)):
+            os.mkdir(output_data_path+word)
+        if not(os.path.isdir(output_data_path+"abs"+word)):
+            os.mkdir(output_data_path+"abs"+word)
         os.system(comp)
         outputfilelist=os.listdir(output_data_path+'_'+word)
         for mp4list in fullfilename:
