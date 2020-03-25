@@ -6,7 +6,7 @@ from train_utils import make_label,load_data, build_model
 def main(dirname):
     x_train,y_train,x_test,y_test=load_data(dirname)
     num_val_samples=(x_train.shape[0])//5
-    model=build_model()
+    model=build_model(y_train.shape[1])
     print('Training stage')
     print('==============')
     history=model.fit(x_train,y_train,epochs=100,batch_size=16,validation_data=(x_test,y_test))
