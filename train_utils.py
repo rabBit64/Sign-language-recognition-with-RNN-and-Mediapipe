@@ -99,13 +99,13 @@ def load_data(dirname):
     y_test=np.array(y_test)
     return x_train,y_train,x_test,y_test
 
-def build_model():
+def build_model(label):
     model = Sequential()
     model.add(layers.LSTM(64, return_sequences=True,
                    input_shape=(70, 84))) 
     model.add(layers.LSTM(32, return_sequences=True))
     model.add(layers.LSTM(32))
-    model.add(layers.Dense(17, activation='softmax'))
+    model.add(layers.Dense(label, activation='softmax'))
     model.compile(loss='categorical_crossentropy',
                   optimizer='adam',
                   metrics=['accuracy'])
