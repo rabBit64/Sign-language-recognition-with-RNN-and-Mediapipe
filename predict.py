@@ -97,12 +97,10 @@ def main(input_data_path,output_data_path):
             if ".DS_Store" in mp4list:
                 continue
             filel.append(mp4list)
-            '''
             inputfilen='   --input_video_path='+input_data_path+word+mp4list
             outputfilen='   --output_video_path='+output_data_path+'_'+word+mp4list
             cmdret=cmd+inputfilen+outputfilen
             os.system(cmdret)
-            '''
     #mediapipe동작 작동 종료:
     output_dir=output_data_path
     x_test,Y=load_data(output_dir)
