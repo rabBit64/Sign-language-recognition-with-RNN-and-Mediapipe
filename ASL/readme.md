@@ -6,7 +6,7 @@ Machine learning requires a lot of data for model training.  We welcome any cont
 
 #### how can I contribute?
 Send us your txt files in a single folder that has word name. (e.g. 'Mom' folder should contain only mom txt files)  
-*Prediction accuracy requires at least 100 videos per category   
+**High Prediction accuracy requires a sufficient amout of videos per category (at least 150)*   
 
 
 **reference*   
